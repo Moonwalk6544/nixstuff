@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+usage (){
+	echo 'Usage: pent [shell]'
+	echo 'Available shells: ' 
+	ls /home/garettm/.shells/ -1 | sed -e 's/\..*$//' 
+}
+if [ "$#" -ne 1 ]
+then
+	usage
+	exit
+fi
+nix-shell ~/.shells/$1.nix

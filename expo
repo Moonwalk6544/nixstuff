@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mkdir ~/Documents/Export/
+cp /etc/nixos/configuration.nix ~/Documents/Export/
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+if [ "$#" -ne 2 ] 
+then
+	echo '2 arguments required'
+	echo 'Usage: addhost [ip] [hostname]'
+	exit
+fi
+rm -f /etc/nixos/network.nix
+echo "{ config, lib, pkgs, modulesPath, ... }:" > /etc/nixos/network.nix
+
+echo "{" >> /etc/nixos/network.nix
+echo " imports = [ ];">> /etc/nixos/network.nix
+
+echo "  networking.extraHosts =">> /etc/nixos/network.nix
+echo "        ''">> /etc/nixos/network.nix
+echo "        $@">> /etc/nixos/network.nix
+echo "        '';">> /etc/nixos/network.nix
+echo "}" >> /etc/nixos/network.nix
+nixos-rebuild switch
+
