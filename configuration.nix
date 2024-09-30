@@ -77,16 +77,36 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
   #services.xserver.videoDriver = "virtualbox";
   # Enable the Budgie Desktop environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
+  ##services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.desktopManager.budgie.enable = true;
+	services.xserver.displayManager = {
 
+            sddm.enable = true;
+
+            defaultSession = "none+awesome";
+
+        };
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    	layout = "us";	
+	xkbVariant = "";
+	enable = true;
+	windowManager.awesome = {
+		enable = true;
+                luaModules = with pkgs.luaPackages; [
+
+                    luarocks # is the package manager for Lua modules
+
+                    luadbi-mysql # Database abstraction layer
+
+                ];
+
+
+
+            };
   };
 
   # Enable CUPS to print documents.
@@ -135,15 +155,17 @@
   pkgs.unzip
   tmux
   dwm
+  gh
   dwmbar
   neofetch
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
+  alacritty
+  kitty
+  
   neovim
   git
   python3
-  openvpn
-  plocate
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

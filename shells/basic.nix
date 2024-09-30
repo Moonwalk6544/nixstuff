@@ -12,10 +12,5 @@ mkShell {
 	dirb
 	thc-hydra
 	ffuf
-	inetutils
-	gobuster
-	dirb
-	responder
-	john
   ];
 }
