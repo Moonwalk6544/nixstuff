@@ -58,10 +58,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+
   # Set your time zone.
   time.timeZone = "America/Boise";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -78,37 +77,28 @@
 
   # Enable the X11 windowing system.
   #services.xserver.enable = true;
-  services.xserver.videoDriver = "virtualbox";
-  libinput.enable=true;
+  #services.xserver.videoDriver = "virtualbox";
+  #libinput.enable=true;
   
   # Enable the Budgie Desktop environment.
   ##services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.budgie.enable = true;
-	services.xserver.displayManager = {
-
-            sddm.enable = true;
-
-            defaultSession = "none+awesome";
-
-        };
   # Configure keymap in X11
   services.xserver = {
-    	layout = "us";	
-	xkbVariant = "";
-	enable = true;
-	windowManager.awesome = {
-		enable = true;
-                luaModules = with pkgs.luaPackages; [
-
-                    luarocks # is the package manager for Lua modules
-
-                    luadbi-mysql # Database abstraction layer
-
-                ];
-
-
-
-            };
+    displayManager = { 
+      sddm.enable = true;
+      defaultSession = "none+awesome";
+    };
+    layout = "us";	
+    xkbVariant = "";
+    enable = true;
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks # is the package manager for Lua modules
+        luadbi-mysql # Database abstraction layer
+      ];
+    };
   };
 
   # Enable CUPS to print documents.
@@ -146,28 +136,28 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
     
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #virtualisation.virtualbox.guest.enable = true;
   #virtualisation.virtualbox.guest.x11 = true;
-  pkgs.zip
-  pkgs.unzip
-  tmux
-  dwm
-  gh
-  dwmbar
-  neofetch
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  alacritty
-  kitty
-  
-  neovim
-  git
-  python3
+    pkgs.zip
+    pkgs.unzip
+    tmux
+    dwm
+    gh
+    dwmbar
+    neofetch
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    alacritty
+    kitty
+    
+    neovim
+    git
+    python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -189,7 +179,11 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+    nixpkgs.config.allowUnfree = true;
+    virtualisation.virtualbox.host.enable = true;
+    nixpkgs.config.virtualbox.host.enableExtensionPack = true;
+    virtualisation.virtualbox.guest.enable = true;
+    virtualisation.virtualbox.guest.x11 = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
