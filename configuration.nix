@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,... }:
+{ config, lib, pkgs, inputs,... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -78,7 +78,9 @@
 
   # Enable the X11 windowing system.
   #services.xserver.enable = true;
-  #services.xserver.videoDriver = "virtualbox";
+  services.xserver.videoDriver = "virtualbox";
+  libinput.enable=true;
+  
   # Enable the Budgie Desktop environment.
   ##services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.budgie.enable = true;
