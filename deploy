@@ -1,0 +1,6 @@
+#!/usr/bin/env bash 
+
+h=~/
+
+cp /etc/nixos/configuration.nix $h/conf.bak
+nixos-generate-config

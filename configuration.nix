@@ -42,7 +42,8 @@
       #./web.nix  
       #./windows.nix  
       #./wireless.nix  
-    ];
+      #<home-manager/nixos>
+  ];
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -153,13 +154,12 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     alacritty
-    kitty
-    
     neovim
     git
     python3
   ];
-
+  #programs.home-manager.enable=true;
+  #programs.home-manager.path = https://github.com/rycee/home-manager/archive/release-18.03.tar.gz;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -183,7 +183,7 @@
     virtualisation.virtualbox.host.enable = true;
     nixpkgs.config.virtualbox.host.enableExtensionPack = true;
     virtualisation.virtualbox.guest.enable = true;
-    virtualisation.virtualbox.guest.x11 = true;
+    #virtualisation.virtualbox.guest.x11 = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
