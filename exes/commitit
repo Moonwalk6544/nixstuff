@@ -4,9 +4,9 @@ nixL=~/nixstuff
 confi=~/.config
 cp /etc/nixos/configuration.nix $nixL/
 cp -r ~/.shells/* $nixL/shells/
-cp -r $confi/awesome/* $confi/home-manager/* $nixL/.config/
+cp -r $confi/awesome/ $confi/home-manager/ $nixL/.config/
 git add .
 echo "Reason for commit: "
 read reason
-git commit -m $reason 
+git commit -m "$reason" 
 git push 
