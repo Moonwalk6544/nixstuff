@@ -71,6 +71,13 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+  programs.alacritty={
+	enable=true;
+	settings={
+		font.size=10;
+		#shell.program="/run/current-system/sw/bin/tmux new -A -s main";
+	};
+  };
   programs.kitty = lib.mkForce {
 
   enable = true;
