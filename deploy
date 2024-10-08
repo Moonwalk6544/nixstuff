@@ -2,10 +2,10 @@
 
 h=~/
 
-cp /etc/nixos/configuration.nix $h/conf.bak
+cp -f /etc/nixos/configuration.nix $h/conf.bak
 sudo nixos-generate-config
 cd $h/nixstuff
-sudo cp configuration.nix /etc/nixos/configuration.nix
-cp -r .config/* ../.config/
+sudo cp -f configuration.nix /etc/nixos/configuration.nix
+cp -r .config/ .
 sudo nixos-rebuild switch
 home-manager switch
