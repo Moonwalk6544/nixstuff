@@ -6,6 +6,8 @@ cp -f /etc/nixos/configuration.nix $h/conf.bak
 sudo nixos-generate-config
 cd $h/nixstuff
 sudo cp -f configuration.nix /etc/nixos/configuration.nix
-cp -r .config/ .
+cp -r .config/ $h/
+
+
 sudo nixos-rebuild switch
 home-manager switch
